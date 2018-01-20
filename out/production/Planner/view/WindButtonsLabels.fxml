@@ -2,7 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
@@ -11,6 +12,11 @@
         <TextField fx:id="textField" layoutX="14.0" layoutY="56.0" />
         <Button fx:id="button" layoutX="217.0" layoutY="56.0" mnemonicParsing="false" onAction="#onAdd" text="Button" />
         <Label fx:id="label" layoutX="56.0" layoutY="14.0" prefHeight="32.0" prefWidth="243.0" text="Label" />
-      <ListView fx:id="lView" layoutX="69.0" layoutY="110.0" prefHeight="445.0" prefWidth="271.0" />
+      <TableView fx:id="tView" layoutX="22.0" layoutY="110.0" prefHeight="479.0" prefWidth="361.0">
+        <columns>
+          <TableColumn fx:id="doCol" prefWidth="248.0" text="What to do" />
+          <TableColumn fx:id="dateCol" minWidth="7.0" prefWidth="112.0" resizable="false" text="date" />
+        </columns>
+      </TableView>
     </children>
 </Pane>

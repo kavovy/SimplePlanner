@@ -13,7 +13,6 @@ public class Controller {
 
     @FXML
     void initialize(){
-       // System.out.println("asdasd");
        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/WindButtonsLabels.fxml"));
         Pane pane = null;
         try {

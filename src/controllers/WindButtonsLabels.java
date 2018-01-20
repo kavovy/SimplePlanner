@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import main.AddedTexts;
+import javafx.scene.control.cell.PropertyValueFactory;
+import main.TextsAdded;
+
+import java.util.Date;
 
 public class WindButtonsLabels {
     private Controller controller;
@@ -16,20 +19,24 @@ public class WindButtonsLabels {
     @FXML
     Label label;
     @FXML
-    ListView<String> lView;
+    TableView<TextsAdded> tView;
 
-
-    AddedTexts addedTexts = new AddedTexts();
-
+    ObservableList<TextsAdded> texts = FXCollections.observableArrayList();
     public void setController(Controller controller){
         this.controller = controller;
     }
+
+   @FXML
+   TableColumn doCol, dateCol;
 
     @FXML
     void initialize(){
         button.setText("Add this :)");
         label.setText("Quick adding");  //hardcoded in
-        lView.setItems(FXCollections.observableList(addedTexts.getTexty()));
+        doCol.setCellValueFactory(new PropertyValueFactory<>("text")); //<TextsAdded,String>
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));    //<TextsAdded,Date>
+        tView.setItems(texts);
+
     }
 
     @FXML
@@ -41,7 +48,8 @@ public class WindButtonsLabels {
             alert.setContentText("Write something");
             alert.showAndWait();
         }else {
-            addedTexts.add(textField.getText());
+            Date date = new Date();
+            texts.add(new TextsAdded(date, textField.getText()));
             initialize();
         }
     }
